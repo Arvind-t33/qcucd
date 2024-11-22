@@ -5,7 +5,7 @@ export function MainTextSparkles() {
 
   return (
     <div className="h-[40rem] w-full flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="md:text-100xl text-xl lg:text-8xl font-bold text-center text-white relative z-20" style={{ fontFamily: '"geist-mono", monospace' }}>
+      <h1 className="md:text-100xl text-7xl font-bold text-center text-white relative z-20" style={{ fontFamily: '"geist-mono", monospace' }}>
         Quantum Computing at Davis
       </h1>
       <div className="relative w-full h-full">
@@ -25,7 +25,7 @@ export function MainTextSparkles() {
         />
 
         {/* Static Description */}
-        <div className="relative z-40 mt-40 text-center text-white text-2xl leading-snug tracking-wide">
+        <div className="relative z-40 mt-32 text-center text-white text-2xl leading-snug tracking-wide max-w-xl mx-auto">
           {description}
         </div>
       </div>
