@@ -65,7 +65,6 @@ export function SignupFormDemo() {
             </span>
           </span>
         </button>
-          
         </div>
       </form>
     </div>
