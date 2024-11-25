@@ -3,7 +3,11 @@ import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { NavbarButton } from "@/components/ui/navbar-button";
 
-export function Navbar() {
+interface NavbarProps {
+  items: { text: string }[];
+}
+
+export function Navbar({ items }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -29,18 +33,11 @@ export function Navbar() {
       )}
       style={{ fontFamily: '"geist-mono", monospace' }}
     >
-      <div className="p-4 transform transition-transform hover:scale-110">
-        <NavbarButton text="Home" />
-      </div>
-      <div className="p-4 transform transition-transform hover:scale-110">
-        <NavbarButton text="About" />
-      </div>
-      <div className="p-4 transform transition-transform hover:scale-110">
-        <NavbarButton text="Services" />
-      </div>
-      <div className="p-4 transform transition-transform hover:scale-110">
-        <NavbarButton text="Contact" />
-      </div>
+      {items.map((item, index) => (
+        <div key={index} className="p-4 transform transition-transform hover:scale-110">
+          <NavbarButton text={item.text} />
+        </div>
+      ))}
     </nav>
   );
 }

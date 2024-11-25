@@ -4,7 +4,11 @@ import { cn } from "@/lib/utils";
 import { NavbarButton } from "@/components/ui/navbar-button";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 
-export function NavbarSolid() {
+interface NavbarSolidProps {
+  items: { text: string }[];
+}
+
+export function NavbarSolid({ items }: NavbarSolidProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -33,10 +37,14 @@ export function NavbarSolid() {
       style={{ fontFamily: '"geist-mono", monospace', zIndex: 50 }}
     >
       <div className="hidden md:flex space-x-5">
-        <NavbarButton text="Home" />
+        {items.map((item, index) => (
+
+          <NavbarButton key={index} text={item.text} />
+        ))}
+        {/* <NavbarButton text="Home" />
         <NavbarButton text="About" />
         <NavbarButton text="Services" />
-        <NavbarButton text="Contact" />
+        <NavbarButton text="Contact" /> */}
       </div>
       <div className="md:hidden flex justify-between items-center w-full p-4">
         <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -52,10 +60,9 @@ export function NavbarSolid() {
           className="md:hidden flex flex-col space-y-1 absolute top-16 left-4 text-sm"
           style={{ transform: 'translateY(-0.5rem)' }}
         >
-          <NavbarButton text="Home" />
-          <NavbarButton text="About" />
-          <NavbarButton text="Services" />
-          <NavbarButton text="Contact" />
+          {items.map((item, index) => (
+            <NavbarButton key={index} text={item.text} />
+          ))}
         </div>
       )}
     </nav>
