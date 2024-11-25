@@ -8,7 +8,7 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      if (window.scrollY > 100) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -24,7 +24,7 @@ export function Navbar() {
   return (
     <nav
       className={cn(
-        "fixed top-0 left-0 bg-transparent text-white flex items-center justify-center transition-all duration-300 ease-in-out",
+        "hidden md:flex fixed top-0 left-0 w-full bg-transparent text-white items-center justify-center transition-all duration-300 ease-in-out",
         isScrolled ? "h-full w-16 flex-col items-start p-4" : "h-16 w-full"
       )}
       style={{ fontFamily: '"geist-mono", monospace' }}
@@ -36,7 +36,7 @@ export function Navbar() {
         <NavbarButton text="About" />
       </div>
       <div className="p-4 transform transition-transform hover:scale-110">
-        <NavbarButton text="Workshops" />
+        <NavbarButton text="Services" />
       </div>
       <div className="p-4 transform transition-transform hover:scale-110">
         <NavbarButton text="Contact" />

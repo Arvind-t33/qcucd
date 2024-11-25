@@ -7,7 +7,10 @@ const {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./src/**/*.{ts,tsx}"],
+  content: [
+    "./src/**/*.{ts,tsx}",
+    "./node_modules/@shadcn/ui/dist/**/*.{js,ts,jsx,tsx}"
+  ],
   darkMode: "class",
   theme: {
     container: {
