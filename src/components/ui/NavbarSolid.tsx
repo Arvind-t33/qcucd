@@ -61,7 +61,11 @@ export function NavbarSolid({ items }: NavbarSolidProps) {
           style={{ transform: 'translateY(-0.5rem)' }}
         >
           {items.map((item, index) => (
-            <NavbarButton key={index} text={item.text} />
+            <NavbarButton
+            key={index}
+            text={item.text}
+            className="transition-transform duration-300 hover:scale-110"
+          />
           ))}
         </div>
       )}
