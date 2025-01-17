@@ -3,6 +3,7 @@ import { MainTextSparkles } from "@/components/main_text_sparkles";
 import { MemberCardList } from "@/components/member_card_list";
 import { SignupFormDemo } from "@/components/sign-up-form";
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
+import { MeetTheTeamWithLamp as MeetTheTeam } from "@/components/meet_the_team";
 
 export function HomeContent() {
   const [mainTextRef, mainTextVisible] = useIntersectionObserver();
@@ -25,7 +26,8 @@ export function HomeContent() {
           memberCardVisible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <MemberCardList />
+        {/*<MemberCardList />*/}
+        <MeetTheTeam />
       </div>
       <div
         ref={signupFormRef}

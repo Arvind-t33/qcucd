@@ -17,14 +17,15 @@
     "@tsparticles/slim": "^3.6.0",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
-    "framer-motion": "^11.11.17",
+    "framer-motion": "^11.18.0",
     "lucide-react": "^0.460.0",
     "next": "15.0.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-element-to-jsx-string": "^15.0.0",
     "react-icons": "^5.3.0",
-    "tailwind-merge": "^2.5.4",
+    "react-tooltip": "^5.28.0",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
