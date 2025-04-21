@@ -1,0 +1,59 @@
+.
+├── app
+│   ├── about
+│   │   └── page.tsx
+│   ├── contact
+│   │   └── page.tsx
+│   ├── favicon.ico
+│   ├── fonts
+│   │   ├── GeistMonoVF.woff
+│   │   └── GeistVF.woff
+│   ├── globals.css
+│   ├── join
+│   │   └── page.tsx
+│   ├── layout.tsx
+│   ├── page.tsx
+│   └── workshops
+│       └── page.tsx
+├── components
+│   ├── HomeContent.tsx
+│   ├── TypeWriterEffectSmoothDemo.tsx
+│   ├── blocks
+│   │   ├── cards-demo-1.tsx
+│   │   ├── cards-demo-2.tsx
+│   │   └── cards-demo-3.tsx
+│   ├── card_member.tsx
+│   ├── example
+│   │   └── signup-form-demo.tsx
+│   ├── main_text_sparkles.tsx
+│   ├── meet_the_team.tsx
+│   ├── member_card_list.tsx
+│   ├── sign-up-form.tsx
+│   ├── tutorials
+│   │   ├── animated-tooltip_tutorial.tsx
+│   │   ├── signup-form_tutorial.tsx
+│   │   └── text-generate_tutorial.tsx
+│   └── ui
+│       ├── Navbar.tsx
+│       ├── NavbarSolid.tsx
+│       ├── animated-modal.tsx
+│       ├── animated-model-demo.tsx
+│       ├── animated-tooltip.tsx
+│       ├── background-gradient.tsx
+│       ├── card-hover-effect.tsx
+│       ├── input.tsx
+│       ├── label.tsx
+│       ├── lamp.tsx
+│       ├── navbar-button.tsx
+│       ├── sidebar.tsx
+│       ├── sparkles.tsx
+│       ├── tailwindcss-buttons.tsx
+│       ├── text-generate-effect.tsx
+│       └── typewriter-effect.tsx
+├── file_structure.txt
+├── hooks
+│   └── useIntersectionObserver.tsx
+└── lib
+    └── utils.ts
+
+14 directories, 43 files

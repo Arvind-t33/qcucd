@@ -3,11 +3,11 @@ import { Navbar } from "@/components/ui/Navbar";
 import { NavbarSolid } from "@/components/ui/NavbarSolid";
 
 const navbarItems = [
-  { text: "Home" },
-  { text: "About" },
-  { text: "Workshops" },
-  { text: "Contact" },
-  { text: "Join" },
+  { text: "Home", href: "/" },
+  { text: "About", href: "/about" },
+  { text: "Workshops", href: "/workshops" },
+  { text: "Contact", href: "/contact" },
+  { text: "Join", href: "/join" },
 ];
 
 export default function Home() {

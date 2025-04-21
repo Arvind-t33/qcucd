@@ -4,7 +4,8 @@
 
 @layer base {
   :root {
-    --background: linear-gradient(180deg, #000000, #32293a); /* Black gradient */
+    /*--background: linear-gradient(180deg, #0f172a, #0f172a); */ /* Black gradient */
+    --background: linear-gradient(180deg, var(--slate-950), var(--slate-950));
     --foreground: 20 14.3% 4.1%;
     --card: 0 0% 100%;
     --card-foreground: 20 14.3% 4.1%;
