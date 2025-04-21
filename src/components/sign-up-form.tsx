@@ -4,8 +4,6 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { cn } from "@/lib/utils";
 import { IconBrandDiscord } from "@tabler/icons-react";
-import { toast, Toaster } from "sonner";
-import { ButtonsCard } from "./ui/tailwindcss-buttons";
 
 export function SignupFormDemo() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

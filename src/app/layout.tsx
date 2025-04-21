@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { SparklesCore } from "@/components/ui/sparkles";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",

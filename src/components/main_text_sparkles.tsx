@@ -1,6 +1,4 @@
 import { SparklesCore } from './ui/sparkles';
-import { TextGenerateEffect } from "./ui/text-generate-effect";
-import { TextGenerateEffectDemo} from "./components/tutorials/text-generate_tutorial";
 
 export function MainTextSparkles() {
   const description = `Welcome to the Quantum Computing Club at Davis. We explore the fascinating world of quantum computing, from theoretical foundations to practical applications. Join us to learn, collaborate, and innovate in this cutting-edge field.`;

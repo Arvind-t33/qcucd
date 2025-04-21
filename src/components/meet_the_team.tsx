@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Tooltip } from "react-tooltip";
 import { LampContainer } from "@/components/ui/lamp";

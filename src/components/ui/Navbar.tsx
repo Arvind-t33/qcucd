@@ -8,9 +8,9 @@ interface NavbarProps {
 }
 
 export function Navbar({ items }: NavbarProps) {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [topNavVisible, setTopNavVisible] = useState(true);
   const [sideNavVisible, setSideNavVisible] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
