@@ -51,7 +51,7 @@ export function SignupFormDemo() {
         <div className="flex flex-col space-y-4">
           <button
             className="relative inline-flex h-12 overflow-hidden rounded-full p-[1px] focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50 group/discord-btn transform transition-transform duration-500 hover:scale-105"
-            onClick={() => window.open('https://discord.gg/EG637HT5', '_blank', 'noopener,noreferrer')}
+            onClick={() => window.open('https://discord.gg/J8BXEersk8', '_blank', 'noopener,noreferrer')}
           >
             <span className="absolute inset-[-1000%] animate-[spin_2s_linear_infinite] bg-[conic-gradient(from_90deg_at_50%_50%,#E2CBFF_0%,#393BB2_50%,#E2CBFF_100%)]" />
             <span className="inline-flex h-full w-full cursor-pointer items-center justify-center rounded-full bg-[#5865F2] px-3 py-1 text-sm font-medium text-white backdrop-blur-3xl relative">
