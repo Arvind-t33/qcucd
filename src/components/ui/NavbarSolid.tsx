@@ -64,6 +64,7 @@ export function NavbarSolid({ items }: NavbarSolidProps) {
             <NavbarButton
             key={index}
             text={item.text}
+            href={item.href}
             className="transition-transform duration-300 hover:scale-110"
           />
           ))}
