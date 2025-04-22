@@ -1,36 +1,150 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## Overview
+
+The Quantum Computing Club at Davis (QCUCD) website is a modern, responsive platform built to introduce newcomers to quantum computing and invite them to join the club. It showcases club information, team member profiles, upcoming workshops, and provides an easy sign‑up process. Under the hood, QCUCD leverages Next.js for its App Router and server‑side rendering capabilities, React for component-based UI construction, TypeScript for type safety, and Tailwind CSS for utility‑first styling. The site is deployed on Vercel for zero‑configuration hosting, offering seamless CI/CD and global CDN distribution.
+
+## Table of Contents
+
+- [Demo](#demo)  
+- [Features](#features)  
+- [Technology Stack](#technology-stack)  
+- [Project Structure](#project-structure)  
+- [Getting Started](#getting-started)  
+  - [Prerequisites](#prerequisites)  
+  - [Installation](#installation)  
+  - [Running Locally](#running-locally)  
+  - [Building for Production](#building-for-production)  
+- [Deployment](#deployment)  
+- [Contributing](#contributing)  
+- [Contact](#contact)  
+
+---
+
+## Demo
+
+View the live site on Vercel:  
+[https://qcucd.vercel.app](https://qcucd.vercel.app)
+
+---
+
+## Features
+
+- **Home, About, Workshops, Contact & Join Pages** for intuitive navigation and information architecture  
+- **Meet the Team** section with dynamic member cards pulled from React components  
+- **Interactive Effects** such as typewriter animations, sparkles, and particle backgrounds powered by Framer Motion and tsparticles  
+- **Responsive Design** via Tailwind CSS utility classes for mobile‑first layouts  
+- **Custom Hooks** like `useIntersectionObserver` for lazy‑loading and scroll‑based animations  
+- **Accessible UI** leveraging Radix UI primitives and heroicons/react for semantic, screen‑reader‑friendly components  
+
+---
+
+## Technology Stack
+
+- **Next.js 15** – The React Framework for Production; enables hybrid SSG/SSR and the App Router  
+- **React 18** – Component‑based library for building interactive user interfaces  
+- **TypeScript** – Strong typing for reliable, maintainable code  
+- **Tailwind CSS** – Utility‑first CSS framework for rapid styling without leaving HTML templates  
+- **Framer Motion** – Animations and transitions for React components  
+- **tsparticles** – Particle system engine for engaging backgrounds and effects  
+- **Radix UI** – Primitives for accessible UI components  
+- **Vercel** – Zero‑configuration deployment for Next.js with global CDN and preview URLs  
+
+---
+
+## Project Structure
+
+```plaintext
+├── public
+│   └── images & svg assets
+├── src
+│   ├── app                  # Next.js App Router pages & layout
+│   │   ├── about/page.tsx
+│   │   ├── workshops/page.tsx
+│   │   ├── contact/page.tsx
+│   │   ├── join/page.tsx
+│   │   └── layout.tsx
+│   ├── components           # Reusable UI components & demos
+│   ├── hooks                # Custom React hooks (e.g., useIntersectionObserver)
+│   └── lib                  # Utility functions
+├── .eslintrc.json           # Linting rules
+├── tailwind.config.ts       # Tailwind configuration
+├── next.config.ts           # Next.js configuration
+├── package.json             # Dependencies & scripts
+└── README.md                # Project overview (this file)
+```
+
+---
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+
+- **Node.js** ≥ 18.x.x  
+- **npm**, **yarn**, or **pnpm**  
+- **Vercel CLI** (optional, for local deployments)
+
+### Installation
+
+1. Clone the repository:  
+   ```bash
+   git clone https://github.com/Arvind-t33/qcucd.git
+   cd qcucd
+   ```
+2. Install dependencies:  
+   ```bash
+   npm install
+   # or
+   yarn install
+   ```
+
+### Running Locally
 
 ```bash
 npm run dev
 # or
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view in your browser.
+
+### Building for Production
+
+```bash
+npm run build
+npm run start
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Deployment
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Deployment to Vercel is zero‑configuration:
 
-## Learn More
+1. Push your changes to GitHub.  
+2. Vercel automatically builds and deploys the site on every commit.  
 
-To learn more about Next.js, take a look at the following resources:
+For manual deployment:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm install -g vercel
+vercel --prod
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+1. Fork the repo  
+2. Create a new branch: `git checkout -b feature/YourFeature`  
+3. Make your changes and commit: `git commit -m "Add feature"`  
+4. Push to your fork and open a Pull Request  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Please adhere to existing coding conventions and include clear commit messages.
+
+---
+
+## Contact
+
+For questions or feedback, open an issue on GitHub or contact the club admin.
+
+---
+
+*Built with ❤️ by the Quantum Computing Club at Davis*
