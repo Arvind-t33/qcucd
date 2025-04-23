@@ -27,6 +27,7 @@ export function MeetTheTeamWithLamp() {
       </motion.h2>
 
       <div className="relative z-50 flex flex-row justify-center items-center gap-8">
+
         {team.map((member) => (
           <div key={member.name} className="relative group">
             <img
@@ -40,7 +41,7 @@ export function MeetTheTeamWithLamp() {
               content={
                 <div className="text-center">
                   <p className="font-bold">{member.name}</p>
-                  <p className="text-gray-600 dark:text-gray-400">{member.role}</p>
+                  <p className="text-white ">{member.role}</p>
                 </div>
               }
               className="bg-gray-800 text-white p-2 rounded shadow-md"
