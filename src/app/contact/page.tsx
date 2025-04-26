@@ -12,10 +12,10 @@ export default function Contact() {
         </h1>
 
         <p className="max-w-2xl text-white/80 text-lg mb-6 text-center">
-          Have questions about the Quantum Computing Club at UC Davis? Join our Discord community to ask questions, get support, and connect with members:
+          Have questions about the Quantum Computing Club at UC Davis? Join our Discord community to ask questions, get support, and connect with members:
         </p>
 
-        <div className="mt-8 bg-black/50 backdrop-blur-sm p-4 rounded-md">
+        <div className="mt-8 backdrop-blur-sm p-4 rounded-md">
           <SignupFormDemo />
         </div>
       </div>

@@ -12,7 +12,7 @@ export function SignupFormDemo() {
   };
 
   return (
-    <div className="max-w-2xl w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-black bg-opacity-75 hover:bg-opacity-80 dark:bg-black">
+    <div className="max-w-2xl w-full mx-auto rounded-none md:rounded-2xl p-4 md:p-8 shadow-input bg-transparent bg-opacity-75 hover:bg-opacity-80 dark:bg-black">
       <div className="flex flex-col items-center text-center">
         <h2 className="font-bold text-3xl text-white dark:text-white">
           Sign up for the Club
