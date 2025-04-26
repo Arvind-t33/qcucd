@@ -4,6 +4,7 @@ import "./globals.css";
 
 import { Navbar } from "@/components/ui/Navbar";
 import { NavbarSolid } from "@/components/ui/NavbarSolid";
+import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const navbarItems = [
   { text: "Home", href: "/" },
@@ -37,16 +38,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gradient-to-b`}
-      >
-        {/* top nav */}
-        <Navbar items={navbarItems} />
-        {/* solid nav (if you need both) */}
-        <NavbarSolid items={navbarItems} />
+    <body
+      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+    >
+      <AuroraBackground>
+        <div className="relative z-10 min-h-screen">
+          {/* top nav */}
+          <Navbar items={navbarItems} />
+          {/* solid nav (if you need both) */}
+          <NavbarSolid items={navbarItems} />
 
-        {children}
-      </body>
-    </html>
+          {children}
+        </div>
+      </AuroraBackground>
+    </body>
+  </html>
   );
 }

@@ -26,7 +26,7 @@ export function MeetTheTeamWithLamp() {
         Meet the Team
       </motion.h2>
 
-      <div className="relative z-50 flex flex-row justify-center items-center gap-8">
+      <div className="relative flex flex-row justify-center items-center gap-8">
 
         {team.map((member) => (
           <div key={member.name} className="relative group">

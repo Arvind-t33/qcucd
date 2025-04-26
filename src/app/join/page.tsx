@@ -36,7 +36,7 @@ export default function Join() {
           </ul>
 
           {/* instead of full‑screen centering, just give it some top margin */}
-          <div className="mt-8 bg-black/50 backdrop-blur-sm p-4 rounded-md">
+          <div className="mt-8 backdrop-blur-sm p-4 rounded-md">
             <SignupFormDemo />
           </div>
         </div>

@@ -24,7 +24,7 @@ export function NavbarSolid({ items }: NavbarSolidProps) {
     <nav
       className={cn(
         "md:hidden fixed top-0 left-0 w-full transition-all duration-300 ease-in-out z-50",
-        isScrolled ? "bg-black/90 shadow-md" : "bg-transparent",
+        isScrolled && isMenuOpen ? "bg-black/90 shadow-md" : "bg-transparent",
         "text-white"
       )}
       style={{ fontFamily: '"geist-mono", monospace' }}
@@ -51,7 +51,13 @@ export function NavbarSolid({ items }: NavbarSolidProps) {
         </div>
 
         {/* toggle button always visible on right */}
-        <button onClick={() => setIsMenuOpen((o) => !o)}>
+        <button 
+          onClick={() => setIsMenuOpen((o) => !o)}
+          className={cn(
+            "transition-all duration-300",
+            isScrolled && !isMenuOpen ? "text-black" : "text-white"
+          )}
+        >
           {isMenuOpen ? (
             <XMarkIcon className="h-6 w-6" />
           ) : (

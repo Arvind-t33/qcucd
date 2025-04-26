@@ -4,39 +4,28 @@ import { cn } from "@/lib/utils";
 import { NavbarButton } from "@/components/ui/navbar-button";
 
 interface NavbarProps {
-  items: { text: string }[];
+  items: { text: string; href: string }[];
 }
 
 export function Navbar({ items }: NavbarProps) {
-  const [topNavVisible, setTopNavVisible] = useState(true);
-  const [sideNavVisible, setSideNavVisible] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-
+  
   useEffect(() => {
+    // Debounce scroll handler for better performance
+    let scrollTimer: ReturnType<typeof setTimeout>;
+    
     const handleScroll = () => {
-      if (window.scrollY > 100) {
-        // First hide the top navbar
-        setTopNavVisible(false);
-        
-        // After a short delay, show the side navbar
-        setTimeout(() => {
-          setIsScrolled(true);
-          setSideNavVisible(true);
-        }, 300);
-      } else {
-        // First hide the side navbar
-        setSideNavVisible(false);
-        
-        // After a short delay, show the top navbar
-        setTimeout(() => {
-          setIsScrolled(false);
-          setTopNavVisible(true);
-        }, 300);
-      }
+      if (scrollTimer) clearTimeout(scrollTimer);
+      
+      scrollTimer = setTimeout(() => {
+        setIsScrolled(window.scrollY > 100);
+      }, 10); // Small timeout for smoother state changes
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Use passive listener for better scroll performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
+      if (scrollTimer) clearTimeout(scrollTimer);
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
@@ -46,27 +35,27 @@ export function Navbar({ items }: NavbarProps) {
       {/* Top horizontal navbar */}
       <nav
         className={cn(
-          "hidden md:flex fixed text-white items-center justify-center transition-all duration-700 ease-in-out",
-          "h-16 w-full top-0 left-0"
+          "hidden md:flex fixed text-black items-center justify-center will-change-transform",
+          "h-16 w-full top-0 left-0 z-50"
         )}
         style={{ 
           fontFamily: '"geist-mono", monospace',
           background: 'transparent',
-          opacity: topNavVisible ? 1 : 0,
-          transform: topNavVisible ? 'translateY(0)' : 'translateY(-20px)',
-          pointerEvents: topNavVisible ? 'auto' : 'none',
+          transition: 'transform 400ms ease-out, opacity 400ms ease-out',
+          opacity: isScrolled ? 0 : 1,
+          transform: isScrolled ? 'translateY(-20px)' : 'translateY(0)',
+          pointerEvents: isScrolled ? 'none' : 'auto',
         }}
       >
         {items.map((item, index) => (
           <div 
             key={index} 
-            className="mx-3 my-0 transform transition-all duration-700 ease-in-out"
+            className="mx-3 my-0"
           >
             <NavbarButton 
-              key={index}
               text={item.text}
               href={item.href}
-              className="text-base hover:scale-105 transition-transform"
+              className="text-base hover:scale-105 transition-transform text-black"
             />
           </div>
         ))}
@@ -75,27 +64,26 @@ export function Navbar({ items }: NavbarProps) {
       {/* Side vertical navbar */}
       <nav
         className={cn(
-          "hidden md:flex fixed text-white flex-col items-start p-4 left-0 top-0 h-full w-16 transition-all duration-700 ease-in-out"
+          "hidden md:flex fixed text-black flex-col items-start p-4 left-0 top-0 h-full w-16 z-50 will-change-transform"
         )}
         style={{ 
           fontFamily: '"geist-mono", monospace',
-          background: 'rgba(0,0,0,0.3)', // Made this more transparent
-          backdropFilter: 'blur(5px)',
-          opacity: sideNavVisible ? 1 : 0,
-          transform: sideNavVisible ? 'translateX(0)' : 'translateX(-20px)',
-          pointerEvents: sideNavVisible ? 'auto' : 'none',
+          background: 'transparent', // Completely transparent background
+          transition: 'transform 400ms ease-out, opacity 400ms ease-out',
+          opacity: isScrolled ? 1 : 0,
+          transform: isScrolled ? 'translateX(0)' : 'translateX(-20px)',
+          pointerEvents: isScrolled ? 'auto' : 'none',
         }}
       >
         {items.map((item, index) => (
           <div 
             key={index} 
-            className="my-3 mx-0 transform transition-all duration-500 ease-in-out"
+            className="my-3 mx-0"
           >
             <NavbarButton 
-              key={index}
               text={item.text}
               href={item.href}
-              className="text-sm hover:scale-105 transition-transform"
+              className="text-sm hover:scale-105 transition-transform text-black"
             />
           </div>
         ))}

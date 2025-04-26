@@ -2,6 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+html, body {
+  background-color: #18181b; /* Same as bg-zinc-900 */
+  min-height: 100%;
+  overflow-x: hidden;
+  overscroll-behavior: none; /* Prevents bounce effect on some browsers */
+}
+
 @layer base {
   :root {
     /*--background: linear-gradient(180deg, #0f172a, #0f172a); */ /* Black gradient */
@@ -66,6 +73,22 @@
 }
 .no-scrollbar::-webkit-scrollbar {
   display: none;
+}
+
+@theme inline {
+  --animate-aurora: aurora 60s linear infinite;
+  @keyframes aurora {
+    from {
+      background-position:
+        50% 50%,
+        50% 50%;
+    }
+    to {
+      background-position:
+        350% 50%,
+        350% 50%;
+    }
+  }
 }
 
 @layer base {
