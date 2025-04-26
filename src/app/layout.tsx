@@ -37,21 +37,28 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-    <body
-      className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-    >
-      <AuroraBackground>
-        <div className="relative z-10 min-h-screen">
-          {/* top nav */}
-          <Navbar items={navbarItems} />
-          {/* solid nav (if you need both) */}
-          <NavbarSolid items={navbarItems} />
+    <html lang="en" className="scroll-smooth">
+      <body
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ 
+          overscrollBehaviorY: "auto", 
+          backgroundColor: "#18181b" // same as bg-zinc-900
+        }}
+      >
+        <AuroraBackground>
+          <div className="relative z-10">
+            {/* top nav */}
+            <Navbar items={navbarItems} />
+            {/* solid nav (for mobile) */}
+            <NavbarSolid items={navbarItems} />
 
-          {children}
-        </div>
-      </AuroraBackground>
-    </body>
-  </html>
+            {children}
+            
+            {/* Footer spacer to allow scrolling past content */}
+            <div className="h-24"></div>
+          </div>
+        </AuroraBackground>
+      </body>
+    </html>
   );
 }

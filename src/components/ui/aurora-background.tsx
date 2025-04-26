@@ -1,6 +1,6 @@
 "use client";
 import { cn } from "@/lib/utils";
-import React, { ReactNode } from "react";
+import React, { ReactNode, useEffect } from "react";
 
 interface AuroraBackgroundProps extends React.HTMLProps<HTMLDivElement> {
   children: ReactNode;
@@ -13,6 +13,32 @@ export const AuroraBackground = ({
   showRadialGradient = true,
   ...props
 }: AuroraBackgroundProps) => {
+
+  useEffect(() => {
+    const updateDocHeight = () => {
+      document.documentElement.style.setProperty(
+        '--doc-height', 
+        `${Math.max(document.body.scrollHeight, window.innerHeight)}px`
+      );
+    };
+    
+    updateDocHeight();
+    window.addEventListener('resize', updateDocHeight);
+    
+    // Monitor for DOM changes that might affect height
+    const observer = new MutationObserver(updateDocHeight);
+    observer.observe(document.body, { 
+      childList: true, 
+      subtree: true,
+      attributes: true 
+    });
+    
+    return () => {
+      window.removeEventListener('resize', updateDocHeight);
+      observer.disconnect();
+    };
+  }, []);
+
   return (
     <div
       className={cn(

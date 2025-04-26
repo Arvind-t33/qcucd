@@ -5,8 +5,17 @@
 html, body {
   background-color: #18181b; /* Same as bg-zinc-900 */
   min-height: 100%;
+  overscroll-behavior: auto; /* Prevents bounce effect on some browsers */
+}
+
+html {
+  height: auto;
+  overflow-y: auto;
+}
+
+body {
+  height: auto;
   overflow-x: hidden;
-  overscroll-behavior: none; /* Prevents bounce effect on some browsers */
 }
 
 @layer base {

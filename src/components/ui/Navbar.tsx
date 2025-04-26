@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
 import { NavbarButton } from "@/components/ui/navbar-button";
+import { ChevronRightIcon } from "@heroicons/react/24/outline";
+
 
 interface NavbarProps {
   items: { text: string; href: string }[];
@@ -87,6 +89,14 @@ export function Navbar({ items }: NavbarProps) {
             />
           </div>
         ))}
+        
+        {/* Subtle down arrow indicator */}
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-60">
+          <ChevronRightIcon 
+            className="h-4 w-4 text-black animate-pulse-gentle rotate-90" 
+            aria-hidden="true" 
+          />
+        </div>
       </nav>
     </>
   );

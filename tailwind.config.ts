@@ -60,16 +60,7 @@ module.exports = {
         },
         animation: {
           shimmer: "shimmer 2s linear infinite",
-        },
-        keyframes: {
-          shimmer: {
-            from: {
-              backgroundPosition: "0 0",
-            },
-            to: {
-              backgroundPosition: "-200% 0",
-            },
-          },
+          'pulse-gentle': 'pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         },
       },
       backgroundImage: {
@@ -89,10 +80,25 @@ module.exports = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "shimmer": {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+        "pulse-gentle": {
+          "0": { opacity: '0.6' },
+          "50": { opacity: '0.3' },
+          "100": { opacity: '0.6' }
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "shimmer": "shimmer 2s linear infinite",
+        "pulse-gentle": "pulse-gentle 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
       boxShadow: {
         input: `0px 2px 3px -1px rgba(0,0,0,0.1), 0px 1px 0px 0px rgba(25,28,33,0.02), 0px 0px 0px 1px rgba(25,28,33,0.08)`,

@@ -2,8 +2,8 @@ import { HomeContent } from "@/components/HomeContent";
 
 export default function Home() {
   return (
-    <div className="min-h-screen pt-16 sm:pt-20 p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <div className="grid grid-rows-[auto_1fr_auto] items-center justify-items-center">
+    <div className="min-h-screen pt-28 flex flex-col items-center overflow-hidden">
+      <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <HomeContent />
       </div>
     </div>
