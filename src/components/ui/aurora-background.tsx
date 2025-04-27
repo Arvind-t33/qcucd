@@ -15,6 +15,7 @@ export const AuroraBackground = ({
 }: AuroraBackgroundProps) => {
 
   useEffect(() => {
+    // Keep the height adjustment but make it more efficient
     const updateDocHeight = () => {
       document.documentElement.style.setProperty(
         '--doc-height', 
@@ -25,8 +26,17 @@ export const AuroraBackground = ({
     updateDocHeight();
     window.addEventListener('resize', updateDocHeight);
     
-    // Monitor for DOM changes that might affect height
-    const observer = new MutationObserver(updateDocHeight);
+    // Use a throttled observer to reduce update frequency
+    let timeout: NodeJS.Timeout;
+    const observer = new MutationObserver(() => {
+      if (!timeout) {
+        timeout = setTimeout(() => {
+          updateDocHeight();
+          timeout = null;
+        }, 100);
+      }
+    });
+    
     observer.observe(document.body, { 
       childList: true, 
       subtree: true,
@@ -36,6 +46,7 @@ export const AuroraBackground = ({
     return () => {
       window.removeEventListener('resize', updateDocHeight);
       observer.disconnect();
+      if (timeout) clearTimeout(timeout);
     };
   }, []);
 
@@ -49,25 +60,25 @@ export const AuroraBackground = ({
     >
       <div
         className="absolute inset-0 overflow-hidden"
-        style={
-          {
-            "--aurora":
-              "repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)",
-            "--dark-gradient":
-              "repeating-linear-gradient(100deg,#000_0%,#000_7%,transparent_10%,transparent_12%,#000_16%)",
-            "--white-gradient":
-              "repeating-linear-gradient(100deg,#fff_0%,#fff_7%,transparent_10%,transparent_12%,#fff_16%)",
-
-            "--blue-300": "#93c5fd",
-            "--blue-400": "#60a5fa",
-            "--blue-500": "#3b82f6",
-            "--indigo-300": "#a5b4fc",
-            "--violet-200": "#ddd6fe",
-            "--black": "#000",
-            "--white": "#fff",
-            "--transparent": "transparent",
-          } as React.CSSProperties
-        }
+        style={{
+          position: 'fixed',  // Keep background fixed during scroll
+          width: '100%',
+          height: '100%',
+          zIndex: 0,
+          
+          // Preserve all the original CSS variables
+          "--aurora": "repeating-linear-gradient(100deg,#3b82f6_10%,#a5b4fc_15%,#93c5fd_20%,#ddd6fe_25%,#60a5fa_30%)",
+          "--dark-gradient": "repeating-linear-gradient(100deg,#000_0%,#000_7%,transparent_10%,transparent_12%,#000_16%)",
+          "--white-gradient": "repeating-linear-gradient(100deg,#fff_0%,#fff_7%,transparent_10%,transparent_12%,#fff_16%)",
+          "--blue-300": "#93c5fd",
+          "--blue-400": "#60a5fa",
+          "--blue-500": "#3b82f6",
+          "--indigo-300": "#a5b4fc",
+          "--violet-200": "#ddd6fe",
+          "--black": "#000",
+          "--white": "#fff",
+          "--transparent": "transparent",
+        } as React.CSSProperties}
       >
         <div
           className={cn(
@@ -76,9 +87,15 @@ export const AuroraBackground = ({
             showRadialGradient &&
               `[mask-image:radial-gradient(ellipse_at_100%_0%,black_10%,var(--transparent)_70%)]`,
           )}
+          style={{
+            transform: 'translateZ(0)',  // Force hardware acceleration
+            backfaceVisibility: 'hidden', // Improve performance
+            WebkitBackfaceVisibility: 'hidden',
+            backgroundAttachment: 'fixed', // Keep background fixed during scroll
+          }}
         ></div>
       </div>
-      <div className="relative flex-grow">
+      <div className="relative flex-grow" style={{ zIndex: 1 }}>
         {children}
       </div>
     </div>
