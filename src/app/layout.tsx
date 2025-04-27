@@ -8,10 +8,11 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 
 const navbarItems = [
   { text: "Home", href: "/" },
+  { text: "Join", href: "/join" },
+  { text: "Hackathons", href: "/hackathons" },
   { text: "About", href: "/about" },
   { text: "Workshops", href: "/workshops" },
   { text: "Contact", href: "/contact" },
-  { text: "Join", href: "/join" },
 ];
 
 
