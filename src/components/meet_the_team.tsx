@@ -18,11 +18,16 @@ export function MeetTheTeamWithLamp() {
   return (
     <LampContainer>
       <motion.h2
-        initial={{ opacity: 0, y: 50 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
+        viewport={{ once: true, margin: "0px 0px -100px 0px" }}
+        transition={{ 
+          duration: 0.5, 
+          ease: "easeOut" 
+        }}
         className="text-4xl font-bold mb-10 text-white"
-      >
+        style={{ willChange: "opacity, transform" }}
+        >
         Meet the Team
       </motion.h2>
 

@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { MainTextSparkles } from "@/components/main_text_sparkles";
+import { MainText } from "@/components/main_text";
 import { SignupFormDemo } from "@/components/sign-up-form";
 import { MeetTheTeamWithLamp as MeetTheTeam } from "@/components/meet_the_team";
 import { useInView } from "framer-motion";
@@ -40,7 +40,7 @@ export function HomeContent() {
           transition: 'opacity 1000ms, transform 800ms'
         }}
       >
-        <MainTextSparkles />
+        <MainText />
       </div>
       <div
         ref={memberCardRef}
