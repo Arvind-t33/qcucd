@@ -14,24 +14,33 @@ interface Hackathon {
 const hackathons: Hackathon[] = [
   {
     title: "iQuHACK",
-    description: "MIT Hackathon",
+    description: "MIT Hackathon (Feb 31st - Mar 2nd, 2024)",
     folder: "iQuHACK",
     images: [
-        "IMG_5260.JPG",
-        "IMG_5261.JPG",
-        "IMG_5262.JPG",
+        "IMG_0131.jpg",
         "IMG_5271.JPG",
+        "IMG_0149.jpg",
+        "IMG_5262.JPG",
+        "IMG_0374.jpg",
+        "IMG_5261.JPG",
+        "IMG_5260.JPG",
         "IMG_5272.JPG",
         "IMG_5280.JPG",
         "IMG_Cityline.JPG",
-      ],            // ← replace with your files
+    ],            
   },
-//   {
-//     title: "YQuantum",
-//     description: "Yale Hackathon",
-//     folder: "YQuantum",
-//     images: ["1.jpg", "2.jpg", "3.jpg"],            // ← replace with your files
-//   },
+  {
+    title: "YQuantum",
+    description: "Yale Hackathon (Apr 10th - 12th, 2024)",
+    folder: "YQuantum",
+    images: [
+      "Allparticipants.PNG",
+      "GroupTable.jpeg",
+      "IMG_2128.jpg",
+      "IMG_4371.jpg",
+      "IMG_4390.jpg"
+    ],
+  },
   // add more hackathons here…
 ];
 
@@ -40,7 +49,7 @@ export default function HackathonsPage() {
     <div className="min-h-screen pt-28 flex flex-col items-center overflow-hidden">
       <div className="w-full max-w-7xl px-4 sm:px-6 lg:px-8 space-y-16">
         {/* page header */}
-        <h1 className="text-center text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-slate-200 to-slate-400 bg-clip-text text-transparent">
+        <h1 className="text-center text-4xl md:text-6xl font-bold mb-8 bg-gradient-to-br from-slate-100 to-slate-400 bg-clip-text text-transparent">
           Hackathons
         </h1>
 
@@ -77,8 +86,10 @@ export default function HackathonsPage() {
             <section key={hack.title} className="flex flex-col items-center space-y-6">
               {/* section header */}
               <div className="text-center space-y-2">
-                <h2 className="text-3xl md:text-4xl font-semibold">{hack.title}</h2>
-                <p className="text-base md:text-lg text-neutral-400">{hack.description}</p>
+              <h2 className="text-3xl md:text-4xl font-semibold bg-gradient-to-br from-slate-600 to-slate-100 bg-clip-text text-transparent">
+                {hack.title}
+              </h2>
+                <p className="text-base md:text-lg text-neutral-200">{hack.description}</p>
               </div>
 
               {/* carousel */}

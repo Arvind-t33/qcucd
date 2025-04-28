@@ -260,7 +260,7 @@ export const Card = ({
           src={card.src}
           alt={card.title}
           fill="true"
-          className="absolute inset-0 z-10 object-cover"
+          className="absolute inset-0 z-20 object-cover"
         />
       </motion.button>
     </>
@@ -279,7 +279,7 @@ export const BlurImage = ({
   <Image
     src={src}
     alt={alt}
-    fill                 // ✅ real “fill” prop understood by next/image
+    fill                 
     sizes="(max-width: 768px) 230px, 384px"
     className={cn(
       "transition duration-300 absolute inset-0 object-cover",
