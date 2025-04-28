@@ -221,16 +221,17 @@ export const Card = ({
               </button>
               <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-base font-medium text-black dark:text-white"
+                className="text-base font-medium text-slate-500 dark:text-white"
               >
                 {card.category}
               </motion.p>
-              <motion.p
+              {/* UNCOMMENT THIS IF THE PICTURES REQUIRE TITLES 
+              { <motion.p
                 layoutId={layout ? `title-${card.title}` : undefined}
-                className="mt-4 text-2xl font-semibold text-neutral-700 md:text-5xl dark:text-white"
+                className="mt-4 text-2xl font-semibold text-slate-800 md:text-5xl dark:text-slate-100"
               >
                 {card.title}
-              </motion.p>
+              </motion.p> */}
               <div className="py-10">{card.content}</div>
             </motion.div>
           </div>
@@ -249,12 +250,13 @@ export const Card = ({
           >
             {card.category}
           </motion.p>
+          {/* UNCOMMENT THIS IF THE PICTURES REQUIRE TITLES
           <motion.p
             layoutId={layout ? `title-${card.title}` : undefined}
             className="mt-2 max-w-xs text-left font-sans text-xl font-semibold [text-wrap:balance] text-white md:text-3xl"
           >
             {card.title}
-          </motion.p>
+          </motion.p> */}
         </div>
         <BlurImage
           src={card.src}

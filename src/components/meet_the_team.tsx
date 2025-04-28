@@ -25,7 +25,7 @@ export function MeetTheTeamWithLamp() {
           duration: 0.5, 
           ease: "easeOut" 
         }}
-        className="text-4xl font-bold mb-10 text-white"
+        className="text-4xl font-bold mb-10 bg-gradient-to-br from-white via-slate-300 to-white bg-clip-text text-transparent"
         style={{ willChange: "opacity, transform" }}
         >
         Meet the Team

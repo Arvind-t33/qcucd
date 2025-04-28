@@ -86,7 +86,7 @@ export default function HackathonsPage() {
             <section key={hack.title} className="flex flex-col items-center space-y-6">
               {/* section header */}
               <div className="text-center space-y-2">
-              <h2 className="text-3xl md:text-4xl font-semibold bg-gradient-to-br from-slate-600 to-slate-100 bg-clip-text text-transparent">
+              <h2 className="text-3xl md:text-4xl font-semibold bg-gradient-to-br from-slate-100 to-slate-600 bg-clip-text text-transparent">
                 {hack.title}
               </h2>
                 <p className="text-base md:text-lg text-neutral-200">{hack.description}</p>
