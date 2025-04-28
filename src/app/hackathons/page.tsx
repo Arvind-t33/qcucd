@@ -35,8 +35,12 @@ const hackathons: Hackathon[] = [
     folder: "YQuantum",
     images: [
       "Allparticipants.PNG",
+      "AtWork.JPG",
       "GroupTable.jpeg",
+      "IMG_4342.jpg",
+      "IMG_4349.jpg",
       "IMG_2128.jpg",
+      "IMG_4304.jpg",
       "IMG_4371.jpg",
       "IMG_4390.jpg"
     ],
