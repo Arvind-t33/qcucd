@@ -30,17 +30,49 @@ type Card = {
 
 export const CarouselContext = createContext<{
   onCardClose: (index: number) => void;
+  navigateToImage: (direction: 'next' | 'prev', currentIndex: number) => void;
   currentIndex: number;
+  totalItems: number;
+  allCards: Card[];
 }>({
   onCardClose: () => {},
+  navigateToImage: () => {},
   currentIndex: 0,
+  totalItems: 0,
+  allCards: [],
 });
 
-export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
+export const Carousel = ({ items, initialScroll = 0, allCards }: CarouselProps & { allCards: Card[] }) => {
   const carouselRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const totalItems = items.length;
+
+  const navigateToImage = (direction: 'next' | 'prev', index: number) => {
+    let newIndex;
+    if (direction === 'next') {
+      newIndex = (index + 1) % totalItems;
+    } else {
+      newIndex = (index - 1 + totalItems) % totalItems;
+    }
+    
+    // Update current index
+    setCurrentIndex(newIndex);
+    
+    // Scroll the carousel
+    if (carouselRef.current) {
+      const cardWidth = isMobile() ? 230 : 384;
+      const gap = isMobile() ? 4 : 8;
+      const scrollPosition = (cardWidth + gap) * newIndex;
+      carouselRef.current.scrollTo({
+        left: scrollPosition,
+        behavior: "smooth",
+      });
+    }
+    
+    return newIndex;
+  };
 
   useEffect(() => {
     if (carouselRef.current) {
@@ -88,7 +120,13 @@ export const Carousel = ({ items, initialScroll = 0 }: CarouselProps) => {
 
   return (
     <CarouselContext.Provider
-      value={{ onCardClose: handleCardClose, currentIndex }}
+      value={{ 
+        onCardClose: handleCardClose, 
+        navigateToImage,
+        currentIndex,
+        totalItems,
+        allCards,
+      }}
     >
       <div className="relative w-full">
         <div
@@ -163,35 +201,44 @@ export const Card = ({
   layout?: boolean;
 }) => {
   const [open, setOpen] = useState(false);
+  const [viewIndex, setViewIndex] = useState(index);
   const containerRef = useRef<HTMLDivElement>(null);
-  const { onCardClose, currentIndex } = useContext(CarouselContext);
+  const { onCardClose, navigateToImage, totalItems, allCards } = useContext(CarouselContext);
+  // Get the current card to display based on viewIndex
+  const currentCard = open && allCards ? allCards[viewIndex] : card;
+  
+
+  // Handle navigation within expanded view
+  const handleNavigate = (direction: 'next' | 'prev') => {
+    const newIndex = navigateToImage(direction, viewIndex);
+    setViewIndex(newIndex);
+  };
 
   useEffect(() => {
     function onKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
         handleClose();
+      } else if (open && event.key === "ArrowRight") {
+        handleNavigate('next');
+      } else if (open && event.key === "ArrowLeft") {
+        handleNavigate('prev');
       }
-    }
-
-    if (open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
     }
 
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
-  }, [open]);
+  }, [open, viewIndex]);
 
   useOutsideClick(containerRef, () => handleClose());
 
   const handleOpen = () => {
     setOpen(true);
+    setViewIndex(index);
   };
 
   const handleClose = () => {
     setOpen(false);
-    onCardClose(index);
+    onCardClose(viewIndex); // Use viewIndex to sync carousel position
   };
 
   return (
@@ -211,28 +258,66 @@ export const Card = ({
               exit={{ opacity: 0 }}
               ref={containerRef}
               layoutId={layout ? `card-${card.title}` : undefined}
-              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-white p-4 font-sans md:p-10 dark:bg-neutral-900"
+              className="relative z-[60] mx-auto my-10 h-fit max-w-5xl rounded-3xl bg-neutral-900 p-4 font-sans md:p-10 dark:bg-neutral-900"
             >
+              { /* Close button */}
               <button
                 className="sticky top-4 right-0 ml-auto flex h-8 w-8 items-center justify-center rounded-full bg-black dark:bg-white"
                 onClick={handleClose}
               >
                 <IconX className="h-6 w-6 text-neutral-100 dark:text-neutral-900" />
               </button>
+
+              {/* Navigation arrows */}
+              <div className="absolute top-1/2 inset-x-4 sm:inset-x-8 flex justify-between items-center z-20 -translate-y-1/2 pointer-events-none">
+                <button 
+                  onClick={() => handleNavigate('prev')}
+                  className="p-1 sm:p-2 rounded-full bg-neutral-700/40 hover:bg-neutral-900/50 hover:scale-110 transition-all pointer-events-auto shadow-lg shadow-black/40 sm:shadow-black/80"
+                  aria-label="Previous image"
+                >
+                  <IconArrowNarrowLeft className="h-5 w-5 sm:h-8 sm:w-8 text-white" />
+                </button>
+                <button 
+                  onClick={() => handleNavigate('next')}
+                  className="p-1 sm:p-2 rounded-full bg-neutral-700/40 hover:bg-neutral-900/50 hover:scale-110 transition-all pointer-events-auto shadow-lg shadow-black/40 sm:shadow-black/80"
+                  aria-label="Next image"
+                >
+                  <IconArrowNarrowRight className="h-5 w-5 sm:h-8 sm:w-8 text-white" />
+                </button>
+              </div>
+              
+              {/* Image counter */}
+              <div className="absolute bottom-4 left-0 right-0 flex justify-center">
+                <span className="px-3 py-1 bg-black/40 rounded-full text-sm text-white">
+                  {viewIndex + 1} / {totalItems}
+                </span>
+              </div>
+
               <motion.p
                 layoutId={layout ? `category-${card.title}` : undefined}
-                className="text-base font-medium text-slate-500 dark:text-white"
+                className="text-base font-medium text-slate-500 text-white dark:text-white"
               >
-                {card.category}
+                {currentCard.category}
               </motion.p>
               {/* UNCOMMENT THIS IF THE PICTURES REQUIRE TITLES 
-              { <motion.p
+              <motion.p
                 layoutId={layout ? `title-${card.title}` : undefined}
                 className="mt-4 text-2xl font-semibold text-slate-800 md:text-5xl dark:text-slate-100"
               >
                 {card.title}
               </motion.p> */}
-              <div className="py-10">{card.content}</div>
+              <div className="py-6 flex justify-center">
+                <div className="relative w-full h-[70vh] rounded-lg overflow-hidden">
+                  <Image
+                    src={currentCard.src}
+                    alt={currentCard.title}
+                    className="object-contain"
+                    fill
+                    sizes="(max-width: 768px) 95vw, 80vw"
+                  />
+                </div>
+              </div>
+              {/* <div className="py-10">{currentCard.content}</div> */}
             </motion.div>
           </div>
         )}

@@ -59,45 +59,45 @@ export default function HackathonsPage() {
 
         {/* one section per hackathon */}
         {hackathons.map((hack) => {
-          const items = hack.images.map((img, idx) => {
+          // First, create all card objects
+          const cardObjects = hack.images.map((img, idx) => {
             const src = `/images/${hack.folder}/${img}`;
-
-            return (
-            
-              <Card
-                key={idx}
-                index={idx}
-                layout
-                card={{
-                  src,
-                  category: hack.title,
-                  title: `${hack.title} – ${idx + 1}`,
-                  content: (
-                    <img
-                      src={src}
-                      alt={`${hack.title} photo ${idx + 1}`}
-                      // height="500"
-                      // width="500"
-                      className="h-auto w-full mx-auto object-contain"
-                    />
-                  ),
-                }}
-              />
-            );
+            return {
+              src,
+              category: hack.title,
+              title: `${hack.title} – ${idx + 1}`,
+              content: (
+                <img
+                  src={src}
+                  alt={`${hack.title} photo ${idx + 1}`}
+                  className="h-auto w-full mx-auto object-contain"
+                />
+              ),
+            };
           });
+
+          // Then create the Card components
+          const items = cardObjects.map((cardObj, idx) => (
+            <Card
+              key={idx}
+              index={idx}
+              layout
+              card={cardObj}
+            />
+          ));
 
           return (
             <section key={hack.title} className="flex flex-col items-center space-y-6">
               {/* section header */}
               <div className="text-center space-y-2">
-              <h2 className="text-3xl md:text-4xl font-semibold bg-gradient-to-br from-slate-100 to-slate-600 bg-clip-text text-transparent">
-                {hack.title}
-              </h2>
+                <h2 className="text-3xl md:text-4xl font-semibold bg-gradient-to-br from-slate-100 to-slate-600 bg-clip-text text-transparent">
+                  {hack.title}
+                </h2>
                 <p className="text-base md:text-lg text-neutral-200">{hack.description}</p>
               </div>
 
-              {/* carousel */}
-              <Carousel items={items} />
+              {/* carousel with allCards passed */}
+              <Carousel items={items} allCards={cardObjects} />
             </section>
           );
         })}

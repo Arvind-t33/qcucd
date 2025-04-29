@@ -7,6 +7,7 @@ const {
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: 'media',
   content: [
     "./src/**/*.{ts,tsx}",
     "./node_modules/@shadcn/ui/dist/**/*.{js,ts,jsx,tsx}"
