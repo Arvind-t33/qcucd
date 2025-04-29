@@ -15,6 +15,7 @@ import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "motion/react";
 import Image, { ImageProps } from "next/image";
 import { useOutsideClick } from "@/hooks/use-outside-click";
+import { useSwipeable } from "react-swipeable";
 
 interface CarouselProps {
   items: JSX.Element[];
@@ -206,6 +207,8 @@ export const Card = ({
   const { onCardClose, navigateToImage, totalItems, allCards } = useContext(CarouselContext);
   // Get the current card to display based on viewIndex
   const currentCard = open && allCards ? allCards[viewIndex] : card;
+
+  const [imageLoading, setImageLoading] = useState(true);
   
 
   // Handle navigation within expanded view
@@ -241,6 +244,12 @@ export const Card = ({
     onCardClose(viewIndex); // Use viewIndex to sync carousel position
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNavigate('next'),
+    onSwipedRight: () => handleNavigate('prev'),
+    trackMouse: true
+  });
+
   return (
     <>
       <AnimatePresence>
@@ -251,6 +260,7 @@ export const Card = ({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 h-full w-full bg-black/80 backdrop-blur-lg"
+              swipehandlers="true"
             />
             <motion.div
               initial={{ opacity: 0 }}
@@ -272,17 +282,17 @@ export const Card = ({
               <div className="absolute top-1/2 inset-x-4 sm:inset-x-8 flex justify-between items-center z-20 -translate-y-1/2 pointer-events-none">
                 <button 
                   onClick={() => handleNavigate('prev')}
-                  className="p-1 sm:p-2 rounded-full bg-neutral-700/40 hover:bg-neutral-900/50 hover:scale-110 transition-all pointer-events-auto shadow-lg shadow-black/40 sm:shadow-black/80"
+                  className="p-1 sm:p-2 rounded-full bg-neutral-700/40 hover:bg-neutral-900/50 hover:scale-110 transition-all pointer-events-auto shadow-lg shadow-black/80 sm:shadow-black/80"
                   aria-label="Previous image"
                 >
-                  <IconArrowNarrowLeft className="h-5 w-5 sm:h-8 sm:w-8 text-white" />
+                  <IconArrowNarrowLeft className="h-8 w-8 text-white" />
                 </button>
                 <button 
                   onClick={() => handleNavigate('next')}
-                  className="p-1 sm:p-2 rounded-full bg-neutral-700/40 hover:bg-neutral-900/50 hover:scale-110 transition-all pointer-events-auto shadow-lg shadow-black/40 sm:shadow-black/80"
+                  className="p-1 sm:p-2 rounded-full bg-neutral-700/40 hover:bg-neutral-900/50 hover:scale-110 transition-all pointer-events-auto shadow-lg shadow-black/80 sm:shadow-black/80"
                   aria-label="Next image"
                 >
-                  <IconArrowNarrowRight className="h-5 w-5 sm:h-8 sm:w-8 text-white" />
+                  <IconArrowNarrowRight className="h-8 w-8 text-white" />
                 </button>
               </div>
               
@@ -314,7 +324,13 @@ export const Card = ({
                     className="object-contain"
                     fill
                     sizes="(max-width: 768px) 95vw, 80vw"
+                    onLoadingComplete={() => setImageLoading(false)}
                   />
+                  {imageLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-neutral-800">
+                      <div className="h-10 w-10 animate-spin rounded-full border-4 border-neutral-600 border-t-white"/>
+                    </div>
+                  )}
                 </div>
               </div>
               {/* <div className="py-10">{currentCard.content}</div> */}
@@ -367,13 +383,13 @@ export const BlurImage = ({
     src={src}
     alt={alt}
     fill      
-    sizes="(max-width: 768px) 460px, 768px"
+    sizes="(max-width: 768px) 460px, (max-width: 1200px) 768px, 1200px"
     className={cn(
       "transition duration-300 absolute inset-0 object-cover",
       className,
     )}
     placeholder="blur"   // you can drop this if you don’t want the blur effect
     blurDataURL={src}    // quick-and-dirty: use the same file as low-res placeholder
-    priority={false}
+    loading="lazy"
   />
 );
