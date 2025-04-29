@@ -76,8 +76,8 @@ export default function HackathonsPage() {
                     <img
                       src={src}
                       alt={`${hack.title} photo ${idx + 1}`}
-                      height="500"
-                      width="500"
+                      // height="500"
+                      // width="500"
                       className="h-auto w-full mx-auto object-contain"
                     />
                   ),
