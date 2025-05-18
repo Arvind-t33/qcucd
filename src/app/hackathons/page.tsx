@@ -13,6 +13,22 @@ interface Hackathon {
 
 const hackathons: Hackathon[] = [
   {
+    title: "YQuantum",
+    description: "Yale Hackathon (Apr 10th - 12th, 2024)",
+    folder: "YQuantum",
+    images: [
+      "Allparticipants.PNG",
+      "AtWork.JPG",
+      "GroupTable.jpeg",
+      "IMG_4342.jpg",
+      "IMG_4349.jpg",
+      "IMG_2128.jpg",
+      "IMG_4304.jpg",
+      "IMG_4371.jpg",
+      "IMG_4390.jpg"
+    ],
+  },
+  {
     title: "iQuHACK",
     description: "MIT Hackathon (Feb 31st - Mar 2nd, 2024)",
     folder: "iQuHACK",
@@ -28,22 +44,6 @@ const hackathons: Hackathon[] = [
         "IMG_5280.JPG",
         "IMG_Cityline.JPG",
     ],            
-  },
-  {
-    title: "YQuantum",
-    description: "Yale Hackathon (Apr 10th - 12th, 2024)",
-    folder: "YQuantum",
-    images: [
-      "Allparticipants.PNG",
-      "AtWork.JPG",
-      "GroupTable.jpeg",
-      "IMG_4342.jpg",
-      "IMG_4349.jpg",
-      "IMG_2128.jpg",
-      "IMG_4304.jpg",
-      "IMG_4371.jpg",
-      "IMG_4390.jpg"
-    ],
   },
   // add more hackathons here…
 ];
