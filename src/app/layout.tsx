@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 
@@ -10,8 +11,9 @@ const navbarItems = [
   { text: "Home", href: "/" },
   { text: "Join", href: "/join" },
   { text: "Hackathons", href: "/hackathons" },
-  { text: "About", href: "/about" },
+  
   { text: "Workshops", href: "/workshops" },
+  { text: "About", href: "/about" },
   { text: "Contact", href: "/contact" },
 ];
 
