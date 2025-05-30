@@ -10,9 +10,11 @@ export default function Contact() {
         <h1 className="text-4xl font-bold mb-8 text-center text-white">
           Contact Us
         </h1>
-
+//placeholder until i replace them with icons and links
         <p className="max-w-2xl text-white/80 text-lg mb-6 text-center">
-          Have questions about the Quantum Computing Club at UC Davis? Join our Discord community to ask questions, get support, and connect with members:
+          Find us on Linkedin and Instagram!
+          Have questions about the Quantum Computing Club at UC Davis? 
+         Join our Discord community to ask questions, get support, and connect with members:
         </p>
 
         <div className="mt-8 backdrop-blur-sm p-4 rounded-md">
