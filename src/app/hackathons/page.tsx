@@ -14,7 +14,7 @@ interface Hackathon {
 const hackathons: Hackathon[] = [
   {
     title: "YQuantum",
-    description: "Yale Hackathon (Apr 10th - 12th, 2024)",
+    description: "Yale Hackathon (Apr 10th - 12th, 2025)",
     folder: "YQuantum",
     images: [
       "Allparticipants.PNG",
@@ -30,7 +30,7 @@ const hackathons: Hackathon[] = [
   },
   {
     title: "iQuHACK",
-    description: "MIT Hackathon (Feb 31st - Mar 2nd, 2024)",
+    description: "MIT Hackathon (Feb 31st - Mar 2nd, 2025)",
     folder: "iQuHACK",
     images: [
         "IMG_0131.jpg",
